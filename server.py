@@ -9,6 +9,10 @@ UPLOAD_DIRECTORY = "hacked_images"
 # Create the directory if it doesn't exist
 os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
 
+@app.get("/")
+async def read_root():
+    return {"message": "Hello"}
+
 @app.post("/upload/")
 async def upload_image(file: UploadFile = File(...)):
     # Save the file to the specified directory
