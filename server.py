@@ -22,3 +22,10 @@ async def upload_image(file: UploadFile = File(...)):
 
     return {"message": "File uploaded successfully"}
 
+
+@app.get("/viewfiles/")
+async def view_files():
+    # Get the list of files in the specified directory
+    files = os.listdir(UPLOAD_DIRECTORY)
+    return {"files": files}
+
